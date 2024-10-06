@@ -59,4 +59,26 @@ This project involves deploying serverless functions on both **Azure** and **Goo
 - **Authentication Settings**: 
   - Issue: Errors related to incorrect authentication settings were encountered.
   - Solution: Adjusted the permissions to allow HTTP requests and ensured the proper API and role-based permissions were set for the function.
+## GCP Function Setup
+
+### 1. **Creating the Function App on GCP**
+
+- Open the Google Cloud Platform (GCP) console, and create a new Cloud Function App.
+- The function app was set up with the following configurations:
+  - **Runtime stack**: Node.js
+  - **Region**: US Central (Iowa)
+  - **Trigger type**: HTTP
+
+### 2. **Creating the GCP Function**
+
+- I created an HTTP-triggered function named `helloWorld`.
+- The function code was written in **JavaScript**:
+
+```javascript
+exports.helloWorld = (req, res) => {
+  const name = req.query.name || req.body.name || 'World';
+  res.status(200).send(`Hello, ${name}! This HTTP triggered function executed successfully.`);
+};
+
+
 
