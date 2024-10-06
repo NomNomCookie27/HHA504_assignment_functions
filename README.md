@@ -92,9 +92,19 @@ exports.helloWorld = (req, res) => {
 ```
 ![GCP Function Trigger](Functions/GCP%20Function%20Trigger.png)
 
-### 3. Automating the GCP Function with GitHub Actions (Optional)
+### 3. **Setting up Google Cloud Scheduler**
 
-- You can automate the GCP function deployment with GitHub Actions or manually test it through the GCP console.
+- To automate the execution of the GCP Function, I used **Google Cloud Scheduler**.
+- I created a new scheduler job with the following configurations:
+  - **Name**: `trigger-GCP-Function`
+  - **Region**: `us-central1`
+  - **Frequency**: Every day at 9:00 AM (America/New_York timezone)
+  - **Target type**: HTTP
+  - **URL**: `https://us-central1-gcp-serverless-assignment.cloudfunctions.net/GCP-Hello-World-Function`
+  - **HTTP Method**: GET
+
+  ![GCP Cloud Scheduler](./Functions/GCP%20Cloud%20Schedule.png)
+
 
 ## GCP Issues Encountered and Solutions
 ![404 URL Error](Functions/404%20Url%20Error.png)
