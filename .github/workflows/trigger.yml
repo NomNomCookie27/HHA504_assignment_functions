@@ -1,1 +1,13 @@
+name: Scheduled Azure Function Test
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # This runs the job daily at midnight (UTC)
+
+jobs:
+  trigger-azure-function:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger Azure Function
+        run: curl -X GET "https://nomnomcookie27.azurewebsites.net/api/HelloWorldFunction?code=gqlIao3UvbItxnao_C_-iq8rA9qEcLFBpGmuHTnV3tAPAzFuwUajEg%3D%3D"
 
