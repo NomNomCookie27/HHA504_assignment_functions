@@ -59,6 +59,9 @@ This project involves deploying serverless functions on both **Azure** and **Goo
 - **Authentication Settings**: 
   - Issue: Errors related to incorrect authentication settings were encountered.
   - Solution: Adjusted the permissions to allow HTTP requests and ensured the proper API and role-based permissions were set for the function.
+
+## GCP Function Setup
+
 ## GCP Function Setup
 
 ### 1. **Creating the Function App on GCP**
@@ -79,6 +82,26 @@ exports.helloWorld = (req, res) => {
   const name = req.query.name || req.body.name || 'World';
   res.status(200).send(`Hello, ${name}! This HTTP triggered function executed successfully.`);
 };
+```
+### 3. Automating the GCP Function with GitHub Actions (Optional)
 
+- You can automate the GCP function deployment with GitHub Actions or manually test it through the GCP console.
 
+## GCP Issues Encountered and Solutions
+
+- **404 Not Found Errors**:
+  - Issue: After deployment, the function URL returned a 404 error.
+  - Solution: This was resolved by enabling the necessary APIs for the project, such as Cloud Functions, Cloud Build, and Cloud Logging.
+
+- **Deployment Failures**:
+  - Issue: The function failed to deploy due to an incorrect entry point.
+  - Solution: Ensured that the entry point in the GCP console matched the function name in the code (`helloWorld`).
+
+- **Permission Errors**:
+  - Issue: The function could not be accessed due to permission issues.
+  - Solution: Allowed unauthenticated invocations for the function in the GCP console.
+  
+## Conclusion
+
+In this assignment, I successfully deployed serverless functions on both Azure and GCP using HTTP triggers, automated them using GitHub Actions, and resolved several issues during the setup and deployment processes. The documentation and the screenshots provided capture all the major steps and solutions encountered during the assignment.
 
